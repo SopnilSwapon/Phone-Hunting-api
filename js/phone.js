@@ -1,15 +1,27 @@
-const loadPhone = async () => {
-    const res = await fetch('https://openapi.programming-hero.com/api/phones?search=iphone');
+const loadPhone = async (searchText) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
     const phones = data.data;
     displayPhones(phones);
 }
+
 const displayPhones = phones => {
+    const cartContainer = document.getElementById('phone-container');
+
+    const showAllContainer = document.getElementById('show-all-container');
+    if(phones.length > 12){
+        showAllContainer.classList.remove('hidden')
+    }
+    else{
+        showAllContainer.classList.add('hidden')
+    }
+    // clear card before add new cart // 
+    phones = phones.slice(0, 12)                                        
+    cartContainer.textContent = '';
     phones.forEach(phone => {
-        console.log(phone);
-        const cartContainer = document.getElementById('phone-container');
+        // console.log(phone);
         const phoneCart = document.createElement('div');
-        phoneCart.classList = `card w-96 bg-gray-100 p-4 shadow-xl`;
+        phoneCart.classList = `card bg-gray-100 p-4 shadow-xl`;
         phoneCart.innerHTML = `
     <figure>
     <img src="${phone.image}" alt="Phone" />
@@ -22,6 +34,23 @@ const displayPhones = phones => {
                   </div>
                 </div>`;
                 cartContainer.appendChild(phoneCart)
-    })
+    });
+    togglePhoneLoader(false)
+};
+const searchPhone = () =>{
+    togglePhoneLoader(true)
+  const searchField = document.getElementById('input-field');
+  const search = searchField.value;
+//   console.log(search);
+  loadPhone(search);
 }
-loadPhone();
+// spinner or loader //
+const loaderSection = document.getElementById('phones-loader');
+const togglePhoneLoader = (isLoading) =>{
+ if(isLoading){
+    loaderSection.classList.remove('hidden')
+ }
+ else{
+    loaderSection.classList.add('hidden')
+ }
+}

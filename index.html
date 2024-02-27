@@ -15,9 +15,22 @@
     <header>
 
     </header>
-    <main>
+    <main class="container mx-auto">
+        <!-- Search Field -->
+        <div class="w-[70%] mx-auto mt-10">
+            <input id="input-field" type="text" placeholder="search phones" class="input input-bordered w-full max-w-xs" />
+            <button onclick="searchPhone()" class="btn btn-accent">Search</button>
+        </div>
     <section>
-        <div id="phone-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+        <!-- spinner or loader -->
+        <div id="phones-loader" class="text-center my-20 hidden">
+            <span class="loading loading-spinner text-primary"></span>
+        </div>
+        <div id="phone-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-2">
+        </div>
+        <!-- show all phones -->
+        <div id="show-all-container" class="hidden">
+            <button class="btn btn-accent">show all</button>
         </div>
     </section>
     </main>
