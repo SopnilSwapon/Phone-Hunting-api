@@ -87,4 +87,4 @@ const togglePhoneLoader = (isLoading) =>{
 const handleShowAll = () => {
    searchPhone(true);
 }
-// loadPhone('13');
+loadPhone('13');
