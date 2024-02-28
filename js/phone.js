@@ -62,7 +62,7 @@ const showDetailsphones = (phone) =>{
   <img src="${phone.image}" alt="">
   <h2 class='font-semibold text-[20px]'>Storage: ${phone.mainFeatures.storage}</h2>
   <h2 class='font-semibold text-[20px]'>Bluetooth: ${phone?.others?.luetooth}</h2>
-  <h2 class='font-semibold text-[20px]'>WLN: ${phone?.others?.WLAN}</h2>
+  <h2 class='font-semibold text-[20px]'>WLN: ${phone?.others?.WLAN || 'NO WLN available'}</h2>
   `
 }
 // search phone //
@@ -87,4 +87,4 @@ const togglePhoneLoader = (isLoading) =>{
 const handleShowAll = () => {
    searchPhone(true);
 }
-loadPhone('13');
+// loadPhone('13');
