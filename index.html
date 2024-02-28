@@ -15,10 +15,10 @@
     <header>
 
     </header>
-    <main class="container mx-auto">
+    <main class="w-[95%] mx-auto">
         <!-- Search Field -->
-        <div class="w-[70%] mx-auto mt-10">
-            <input id="input-field" type="text" placeholder="search phones" class="input input-bordered w-full max-w-xs" />
+        <div class="w-full mx-auto mt-10">
+            <input id="input-field" type="text" placeholder="search phones" class="input input-bordered w-full max-w-xs bg-gray-500 text-white" />
             <button onclick="searchPhone()" class="btn btn-accent">Search</button>
         </div>
     <section>
@@ -29,10 +29,27 @@
         <div id="phone-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-2">
         </div>
         <!-- show all phones -->
-        <div id="show-all-container" class="hidden">
-            <button class="btn btn-accent">show all</button>
+        <div id="show-all-container" class="hidden text-center">
+            <button onclick="handleShowAll()" class="btn btn-accent text-white font-bold mt-5 px-8">SHOW ALL</button>
         </div>
     </section>
+    
+    <!-- show details modal -->
+<!-- Open the modal using ID.showModal() method -->
+<dialog id="show_details_modal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <h3 id="phone-name" class="font-bold text-center text-3xl"></h3>
+    <div id="show-details-container">
+
+    </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
     </main>
     <footer>
 
